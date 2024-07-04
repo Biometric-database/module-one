@@ -6,7 +6,7 @@ from .models import Worker, OfficialInformation, Institution, Leave, Transformat
 class WorkerAdmin(admin.ModelAdmin):
     list_display = ('file_number', 'surname', 'other_names', 'title', 'sex', 'date_of_birth', 'email_address')
     search_fields = ('file_number', 'surname', 'other_names', 'email_address')
-    list_filter = ('sex', 'marital_status', 'state_of_origin', 'nationality')
+    list_filter = ('sex', 'marital_status', 'lga_of_origin', 'state_of_origin', 'nationality')
 
 @admin.register(OfficialInformation)
 class OfficialInformationAdmin(admin.ModelAdmin):
@@ -28,8 +28,8 @@ class LeaveAdmin(admin.ModelAdmin):
 
 @admin.register(Transformation)
 class TransformationAdmin(admin.ModelAdmin):
-    list_display = ('worker', 'appointment', 'conversion', 'promotion')
-    search_fields = ('worker__surname', 'worker__file_number', 'appointment', 'conversion', 'promotion')
+    list_display = ('worker', 'date', 'rank_designation', 'entry_pt', 'authorization', 'ministry_department')
+    search_fields = ('worker__surname', 'worker__file_number', 'rank_designation', 'entry_pt', 'authorization', 'ministry_department')
 
 @admin.register(PostingTransfer)
 class PostingTransferAdmin(admin.ModelAdmin):
