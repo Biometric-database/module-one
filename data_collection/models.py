@@ -110,17 +110,20 @@ class Leave(models.Model):
 
 class Transformation(models.Model):
     worker = models.ForeignKey(Worker, on_delete=models.CASCADE, related_name='transformations')
-    appointment = models.CharField(max_length=255)
-    conversion = models.CharField(max_length=255)
-    promotion = models.CharField(max_length=255)
+    date = models.DateField()
+    rank_designation = models.CharField(max_length=255)
+    entry_pt = models.CharField(max_length=100) 
+    authorization = models.CharField(max_length=255)
+    ministry_department = models.CharField(max_length=255)
 
     class Meta:
         indexes = [
             models.Index(fields=['worker']),
+            models.Index(fields=['date']),
         ]
 
     def __str__(self):
-        return f"Transformation for {self.worker}"
+        return f"Transformation for {self.worker} on {self.date}"
 
 class PostingTransfer(models.Model):
     worker = models.ForeignKey(Worker, on_delete=models.CASCADE, related_name='postings_transfers')
