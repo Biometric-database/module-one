@@ -7,7 +7,6 @@ This project is a Django-based web application designed to collect, manage, and 
 - [Project Overview](#project-overview)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
-- [Installation](#installation)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [License](#license)
@@ -34,41 +33,7 @@ The Government Workers Data Management System is designed to collect detailed in
 - **JavaScript:** Front-end interactivity
 - **Bootstrap:** Responsive design framework
 
-## Installation
-
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/yourusername/gov-workers-data-management.git
-   cd gov-workers-data-management
-   ```
-
-2. **Set Up Virtual Environment:**
-   ```bash
-   python -m venv env
-   source env/bin/activate   # On Windows use `env\Scripts\activate`
-   ```
-
-3. **Install Dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Set Up Database:**
-   ```bash
-   python manage.py migrate
-   ```
-
-5. **Create Superuser:**
-   ```bash
-   python manage.py createsuperuser
-   ```
-
-6. **Run the Server:**
-   ```bash
-   python manage.py runserver
-   ```
-
-## Usage
+## Usage (TO BE UPDATED)
 
 1. **Access the Admin Interface:**
    Visit `http://127.0.0.1:8000/admin` and log in with the superuser credentials.
