@@ -2,6 +2,8 @@ from django.views.decorators.csrf import csrf_protect
 from django.utils.decorators import method_decorator
 from django.views import View
 from django.shortcuts import render, redirect
+from django.db import transaction, IntegrityError, DatabaseError
+from django.core.exceptions import ValidationError
 from django.db import transaction
 from django.contrib import messages
 import logging
@@ -76,6 +78,15 @@ class MultiStepFormView(View):
                     return redirect('success_url')
                 else:
                     messages.error(request, "Please correct the errors in the forms.")
+        except IntegrityError as e:
+            logger.error(f"Integrity error while saving forms: {e}")
+            messages.error(request, "A data integrity error occurred. Please try again.")
+        except DatabaseError as e:
+            logger.error(f"Database error while saving forms: {e}")
+            messages.error(request, "A database error occurred. Please try again.")
+        except ValidationError as e:
+            logger.error(f"Validation error while saving forms: {e}")
+            messages.error(request, "Validation error occurred. Please check the form data and try again.")
         except Exception as e:
             logger.error(f"Error saving forms: {e}")
             messages.error(request, "An error occurred while processing your request. Please try again.")
